@@ -12,4 +12,4 @@ contoh diatas merupakan hasil konversi dari suhu 50 derajat Celcius menjadi 323 
 ![Farenheit](https://user-images.githubusercontent.com/95726593/201819320-7cec9e89-cde7-441d-95c9-e68590c421f3.png)
 contoh diatas merupakan hasil konversi dari suhu 50 derajat Celcius menjadi 122 derajat Farenheit
 
-Setiap hasil konversi yang telah dilakukan akan terekam dala riwayat konversi
+Setiap hasil konversi yang telah dilakukan akan terekam dalam riwayat konversi
