@@ -1,4 +1,5 @@
 Output Aplikasi
+
 1.Output konversi suhu dari Celcius ke Reamur.Jika kita menentukan suhu berderajat celcius menggunakan slidebar lalu memilih suhu Reamur pada bagian slidebar konversi suhu , maka akan tampil hasil konversi seperti berikut
 ![reamur](https://user-images.githubusercontent.com/95726593/201818087-732127df-0739-4ac3-afbc-7838bba26ea3.png)
 contoh diatas merupakan hasil konversi dari suhu 50 derajat Celcius menjadi 40 derajat Reamur
