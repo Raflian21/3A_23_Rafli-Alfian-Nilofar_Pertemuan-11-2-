@@ -1,12 +1,90 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:statefull2_rafli/widgets/Suhu.dart';
-import 'package:statefull2_rafli/widgets/HistorySuhu.dart';
-import 'package:statefull2_rafli/widgets/Inputan.dart';
-import 'package:statefull2_rafli/widgets/Button.dart';
 
 void main() {
   runApp(MyApp());
+}
+
+class Suhu extends StatelessWidget {
+  const Suhu({
+    Key? key,
+    required this.selctDropdown,
+    required this.listSuhu,
+    required this.onDropChange,
+  }) : super(key: key);
+
+  final String selctDropdown;
+  final List<String> listSuhu;
+  final Function onDropChange;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.only(top: 10),
+      child: DropdownButton(
+          value: selctDropdown,
+          isExpanded: true,
+          items: listSuhu.map((String value) {
+            return DropdownMenuItem<String>(
+              value: value,
+              child: Text(value),
+            );
+          }).toList(),
+          onChanged: (value) {
+            onDropChange(value);
+          }),
+    );
+  }
+}
+
+class HistorySuhu extends StatelessWidget {
+  const HistorySuhu({
+    Key? key,
+    required this.riwayat,
+  }) : super(key: key);
+
+  final List<String> riwayat;
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+        child: ListView.builder(
+            itemCount: riwayat.length,
+            itemBuilder: (context, index) {
+              return Text(riwayat[index]);
+            }));
+  }
+}
+
+class Button extends StatelessWidget {
+  const Button({
+    Key? key,
+    required this.Kversi,
+  }) : super(key: key);
+
+  final Function Kversi;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Expanded(
+          child: Container(
+            height: 40,
+            child: ElevatedButton(
+              onPressed: () {
+                Kversi();
+              },
+              child: Text(
+                "Konversi",
+                style: TextStyle(fontSize: 20),
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
 }
 
 class MyApp extends StatefulWidget {
