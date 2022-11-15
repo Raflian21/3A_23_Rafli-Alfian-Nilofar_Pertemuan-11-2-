@@ -17,9 +17,12 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  TextEditingController text1 = TextEditingController();
+  // TextEditingController text1 = TextEditingController();
   double kelvin = 0, reamor = 0, input = 0;
   double hasil = 0;
+  double valueSuhu = 50;
+
+  TextEditingController suhu = TextEditingController();
 
   String selctDropdown = "Reamur";
   List<String> listSuhu = ["Kelvin", "Reamur", "Fahrenheit"];
@@ -29,24 +32,24 @@ class _MyAppState extends State<MyApp> {
     return setState(() {
       selctDropdown = value.toString();
       //Jika Click SelectDropDown akan langsung menampilkan hasilnya di Daftar History
-      if (text1.text.isNotEmpty) {
+      if (suhu.text.isNotEmpty) {
         switch (selctDropdown) {
           case "Kelvin":
-            hasil = int.parse(text1.text) + 273;
+            hasil = int.parse(suhu.text) + 273;
 
             break;
 
           case "Reamur":
-            hasil = int.parse(text1.text) * 4 / 5;
+            hasil = int.parse(suhu.text) * 4 / 5;
             break;
 
           case "Fahrenheit":
-            hasil = int.parse(text1.text) * 9 / 5 + 32;
+            hasil = int.parse(suhu.text) * 9 / 5 + 32;
             break;
           default:
         }
         History.add("Konversi suhu dari " +
-            text1.text +
+            suhu.text +
             " derajat Celcius Ke " +
             selctDropdown +
             " dengan hasil konversi " +
@@ -57,24 +60,24 @@ class _MyAppState extends State<MyApp> {
 
   void Konversi() {
     return setState(() {
-      if (text1.text.isNotEmpty) {
+      if (suhu.text.isNotEmpty) {
         switch (selctDropdown) {
           case "Kelvin":
-            hasil = int.parse(text1.text) + 273;
+            hasil = int.parse(suhu.text) + 273;
 
             break;
 
           case "Reamur":
-            hasil = int.parse(text1.text) * 4 / 5;
+            hasil = int.parse(suhu.text) * 4 / 5;
             break;
 
           case "Fahrenheit":
-            hasil = int.parse(text1.text) * 9 / 5 + 32;
+            hasil = int.parse(suhu.text) * 9 / 5 + 32;
             break;
           default:
         }
         History.add("Konversi suhu Dari " +
-            text1.text +
+            suhu.text +
             " derajat Celcius Ke " +
             selctDropdown +
             " dengan hasil konversi " +
@@ -94,7 +97,19 @@ class _MyAppState extends State<MyApp> {
           padding: EdgeInsets.only(left: 10, top: 10),
           child: Column(
             children: [
-              Inputan(text1: text1),
+              Slider(
+                value: valueSuhu,
+                max: 100,
+                divisions: 100,
+                label: valueSuhu.round().toString(),
+                onChanged: (double value) {
+                  setState(() {
+                    valueSuhu = value;
+                    suhu.text = valueSuhu.toString();
+                  });
+                },
+              ),
+              // Inputan(text1: text1),
               Suhu(
                 selctDropdown: selctDropdown,
                 listSuhu: listSuhu,
